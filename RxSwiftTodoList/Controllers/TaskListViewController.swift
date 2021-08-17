@@ -60,11 +60,11 @@ class TaskListViewController: UIViewController {
     
     // MARK: - Helpers
     private func filterTasks(by priority: Priority?) {
-        if priority == nil {
+        if priority == nil {  // 不做篩選
             self.filteredTasks = self.tasks.value
             self.updateTableView()
         } else {
-            
+            /* ⭐️ 條件篩選 ⭐️ */
             self.tasks.map { tasks in
                 return tasks.filter { $0.priority == priority! }
             }.subscribe(onNext: { [weak self] tasks in
